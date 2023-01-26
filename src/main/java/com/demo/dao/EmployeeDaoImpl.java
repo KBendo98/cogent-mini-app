@@ -79,4 +79,56 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return list;
 	}
 
+	@Override
+	public int delete(Integer id) {
+		Connection connection = DBConnection.getConnection();
+		
+		try {
+			PreparedStatement pStatement=connection.prepareStatement(
+					"delete from employee where id = ?");
+			pStatement.setInt(1, id);
+			int x = pStatement.executeUpdate();
+			// Close connection
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return x;
+			
+		} catch (SQLException e1) {
+			System.out.println(e1.getMessage());
+			return 0;
+		}
+	}
+
+	@Override
+	public int update(Employee e) {
+Connection connection = DBConnection.getConnection();
+		
+		try {
+			PreparedStatement pStatement=connection.prepareStatement("update employee"
+							+ " set name = ?, dept = ?, salary = ? where id = ?");
+			pStatement.setString(1, e.getName());
+			pStatement.setString(2, e.getDept());
+			pStatement.setFloat(3, e.getSalary());
+			pStatement.setInt(4, e.getId());
+			
+			int x = pStatement.executeUpdate();
+			return x;
+			
+		} catch (SQLException e1) {
+			System.out.println(e1.getMessage());
+			return 0;
+		}
+		finally {
+			try {
+				connection.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
 }

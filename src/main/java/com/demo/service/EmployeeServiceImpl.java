@@ -19,4 +19,16 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return dao.fetch();
 	}
 
+	@Override
+	public int delete(int id) {
+		// TODO Auto-generated method stub
+		return dao.delete(id);
+	}
+
+	@Override
+	public int update(Employee e) {
+		// TODO Auto-generated method stub
+		return dao.update(e);
+	}
+
 }

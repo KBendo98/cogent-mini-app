@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.demo.dao.EmployeeDaoImpl;
 import com.demo.model.Employee;
 import com.demo.service.EmployeeService;
 import com.demo.service.EmployeeServiceImpl;
